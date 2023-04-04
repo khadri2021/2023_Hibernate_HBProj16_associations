@@ -14,4 +14,9 @@ primary key (C_ID)-- The C_ID is unique column and treated as primary key CITIZE
 
 -- In the below alter script foreign key column name(ADHAAR_A_ID) mentioned in @JoinColumn
 -- In the below alter script foreign key constraint name(CITIZEN_ADHAAR_FK) mentioned at @JoinColumn_@ForeignKey name
-alter table CITIZEN add constraint CITIZEN_ADHAAR_FK foreign key (ADHAAR_A_ID) references ADHAAR (A_ID)
+alter table CITIZEN add constraint CITIZEN_ADHAAR_FK foreign key (ADHAAR_A_ID) references ADHAAR (A_ID);
+
+select * from CITIZEN;
+select * from ADHAAR;
+drop table adhaar;
+drop table citizen;

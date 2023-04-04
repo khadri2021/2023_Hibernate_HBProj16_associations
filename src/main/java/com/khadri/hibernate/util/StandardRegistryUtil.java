@@ -16,8 +16,8 @@ public class StandardRegistryUtil {
 	private static SessionFactory factory;
 	private static Session session;
 
-	public static Session createSession(Class<Citizen> classObj1,
-			Class<Adhaar> classObj2) {
+	public static Session createSession(Class<?> classObj1,
+			Class<?> classObj2) {
 
 		BootstrapServiceRegistry bootstrapServiceRegistry = new BootstrapServiceRegistryBuilder()
 				.build();
