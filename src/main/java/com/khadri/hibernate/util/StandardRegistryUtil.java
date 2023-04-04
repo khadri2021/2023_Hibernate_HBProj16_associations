@@ -8,8 +8,8 @@ import org.hibernate.boot.registry.BootstrapServiceRegistryBuilder;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import com.khadri.hibernate.association.uni.one2one.Adhaar;
-import com.khadri.hibernate.association.uni.one2one.Citizen;
+import com.khadri.hibernate.association.one2one.uni.Adhaar;
+import com.khadri.hibernate.association.one2one.uni.Citizen;
 
 public class StandardRegistryUtil {
 

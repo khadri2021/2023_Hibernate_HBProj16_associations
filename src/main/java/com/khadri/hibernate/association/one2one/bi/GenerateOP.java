@@ -1,4 +1,4 @@
-package com.khadri.hibernate.association.bi.one2one;
+package com.khadri.hibernate.association.one2one.bi;
 
 import java.util.Optional;
 import java.util.Random;
