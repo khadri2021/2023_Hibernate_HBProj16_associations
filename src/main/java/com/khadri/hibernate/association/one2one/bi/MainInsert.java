@@ -1,7 +1,5 @@
 package com.khadri.hibernate.association.one2one.bi;
 
-import javax.print.Doc;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -24,13 +22,13 @@ public class MainInsert {
 		patient.setDisease("COVID-19");
 		patient.setOp(GenerateOP.createOP());
 
-		session.save(patient);
-
 		Doctor doctor = new Doctor();
 		doctor.setName("JHON");
 		doctor.setPatient(patient);
-
-		session.save(doctor);
+		
+		patient.setDoctor(doctor);
+		session.save(patient);
+		//session.save(doctor);
 
 		txn.commit();
 

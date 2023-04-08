@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,9 +27,11 @@ public class Doctor {
 	@Column(name = "D_NAME")
 	private String name;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY,orphanRemoval = true)
 	@JoinColumn(name = "D_P_ID",foreignKey = @ForeignKey(name="FK_PATIENT") )
 	private Patient patient;
+	
+	private String status;
 
 	public UUID getId() {
 		return id;
@@ -52,5 +55,13 @@ public class Doctor {
 
 	public void setPatient(Patient patient) {
 		this.patient = patient;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

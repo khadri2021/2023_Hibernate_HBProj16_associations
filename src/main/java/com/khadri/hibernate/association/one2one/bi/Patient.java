@@ -2,10 +2,13 @@ package com.khadri.hibernate.association.one2one.bi;
 
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
@@ -30,6 +33,11 @@ public class Patient {
 
 	@Column(name = "P_DESEASE")
 	private String disease;
+
+	@OneToOne(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	private Doctor doctor;
+	
+	private String status;
 
 	public UUID getId() {
 		return id;
@@ -62,5 +70,21 @@ public class Patient {
 	public void setDisease(String disease) {
 		this.disease = disease;
 	}
-	
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 }

@@ -8,16 +8,12 @@ import org.hibernate.boot.registry.BootstrapServiceRegistryBuilder;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import com.khadri.hibernate.association.one2one.uni.Adhaar;
-import com.khadri.hibernate.association.one2one.uni.Citizen;
-
 public class StandardRegistryUtil {
 
 	private static SessionFactory factory;
 	private static Session session;
 
-	public static Session createSession(Class<?> classObj1,
-			Class<?> classObj2) {
+	public static Session createSession(Class<?>... objects) {
 
 		BootstrapServiceRegistry bootstrapServiceRegistry = new BootstrapServiceRegistryBuilder()
 				.build();
@@ -25,9 +21,13 @@ public class StandardRegistryUtil {
 		StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder(
 				bootstrapServiceRegistry).build();
 
-		factory = new MetadataSources(serviceRegistry)
-				.addAnnotatedClass(classObj1).addAnnotatedClass(classObj2)
-				.buildMetadata().buildSessionFactory();
+		MetadataSources metadataSources = new MetadataSources(serviceRegistry);
+
+		for (int i = 0; i < objects.length; i++) {
+			metadataSources.addAnnotatedClass(objects[i]);
+		}
+
+		factory = metadataSources.buildMetadata().buildSessionFactory();
 
 		session = factory.openSession();
 
